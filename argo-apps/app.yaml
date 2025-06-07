@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hybrid-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/Siluvai1997/hybrid-k8s-gitops-platform.git
+    path: helm/app
+    targetRevision: main
+    helm:
+      releaseName: hybrid-app
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,16 @@
+prometheus:
+  alertmanager:
+    enabled: true
+  pushgateway:
+    enabled: false
+  server:
+    service:
+      type: ClusterIP
+
+grafana:
+  adminPassword: admin
+  service:
+    type: LoadBalancer
+  persistence:
+    enabled: true
+    size: 1Gi
